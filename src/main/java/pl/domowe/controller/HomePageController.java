@@ -29,9 +29,6 @@ public class HomePageController {
     public String homePage(Model model) {
         List<Article> articleList = articleDao.readLastNth(5);
         model.addAttribute("last5article", articleList);
-        for (Article article : articleList) {
-            System.out.println(article);
-        }
         return "index";
     }
 
