@@ -1,12 +1,13 @@
 package pl.domowe.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+public class HomePageController {
     @RequestMapping("/")
-    public String index() {
+    public String homePage(Model model) {
         return "index";
     }
 }

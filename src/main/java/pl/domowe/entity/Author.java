@@ -1,4 +1,4 @@
-package pl.domowe.domain;
+package pl.domowe.entity;
 
 import lombok.Data;
 

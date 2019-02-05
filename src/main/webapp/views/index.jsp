@@ -3,9 +3,10 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Homepage</title>
 </head>
 <body>
-<h1>Index</h1>
+<h1>Homepage</h1>
+
 </body>
 </html>
