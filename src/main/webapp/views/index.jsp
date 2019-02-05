@@ -9,7 +9,10 @@
 <h1>Homepage</h1>
 <ul>
     <c:forEach items="${last5article}" var="article">
-        <li>Article Id: ${article.id} Title: ${article.title} Author: ${article.author.firstName} ${article.author.lastName}</li>
+        <li>Article Id: ${article.id} Title: ${article.title} Author: ${article.author.firstName} ${article.author.lastName}
+        Date created: ${article.created}<br/>
+            Content: <br/>${article.content}
+        </li>
     </c:forEach>
 </ul>
 </body>

@@ -11,6 +11,7 @@ import pl.domowe.entity.Article;
 import pl.domowe.entity.Author;
 import pl.domowe.entity.Category;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,7 +29,13 @@ public class HomePageController {
     @RequestMapping("/")
     public String homePage(Model model) {
         List<Article> articleList = articleDao.readLastNth(5);
-        model.addAttribute("last5article", articleList);
+        List<Article> articleListWithShortenContent = new ArrayList<>();
+        for (Article article : articleList) { //obcinanie contentu
+            String contentToShorten = article.getContent();
+            article.setContent(contentToShorten.substring(0, 200)); //obcinanie contentu do 200 znaków <0,200)
+            articleListWithShortenContent.add(article);
+        }
+        model.addAttribute("last5article", articleListWithShortenContent);
         return "index";
     }
 
