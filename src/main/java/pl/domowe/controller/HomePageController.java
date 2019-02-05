@@ -3,6 +3,7 @@ package pl.domowe.controller;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.domowe.dao.ArticleDao;
 import pl.domowe.dao.AuthorDao;
@@ -27,15 +28,20 @@ public class HomePageController {
     }
 
     @RequestMapping("/")
-    public String homePage(Model model) {
+    public String homepage(Model model) {
         List<Article> articleList = articleDao.readLastNth(5);
         List<Article> articleListWithShortenContent = new ArrayList<>();
         for (Article article : articleList) { //obcinanie contentu
             String contentToShorten = article.getContent();
-            article.setContent(contentToShorten.substring(0, 200)); //obcinanie contentu do 200 znaków <0,200)
+            if (contentToShorten.length()>200){
+                article.setContent(contentToShorten.substring(0, 200)); //obcinanie contentu do 200 znaków <0,200)
+            }
             articleListWithShortenContent.add(article);
         }
         model.addAttribute("last5article", articleListWithShortenContent);
+
+        List<Category> categoryList = categoryDao.readAll();
+        model.addAttribute("categoryList", categoryList);
         return "index";
     }
 
