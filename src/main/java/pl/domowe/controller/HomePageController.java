@@ -1,6 +1,8 @@
 package pl.domowe.controller;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.domowe.dao.ArticleDao;
 import pl.domowe.dao.AuthorDao;
@@ -9,7 +11,6 @@ import pl.domowe.entity.Article;
 import pl.domowe.entity.Author;
 import pl.domowe.entity.Category;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,7 +26,12 @@ public class HomePageController {
     }
 
     @RequestMapping("/")
-    public String homePage() {
+    public String homePage(Model model) {
+        List<Article> articleList = articleDao.readLastNth(5);
+        model.addAttribute("last5article", articleList);
+        for (Article article : articleList) {
+            System.out.println(article);
+        }
         return "index";
     }
 
