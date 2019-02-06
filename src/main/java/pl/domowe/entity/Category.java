@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,4 +16,5 @@ public class Category {
     @Column(length = 100, nullable = false)
     private String name;
     private String description;
+
 }

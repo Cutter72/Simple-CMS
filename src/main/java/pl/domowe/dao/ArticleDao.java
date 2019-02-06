@@ -3,11 +3,13 @@ package pl.domowe.dao;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
 import pl.domowe.entity.Article;
+import pl.domowe.entity.Category;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -24,7 +26,7 @@ public class ArticleDao {
     public Article read(long id) {
         Article article = entityManager.find(Article.class, id);
         Hibernate.initialize(article.getAuthor());
-        Hibernate.initialize(article.getCategory());
+        Hibernate.initialize(article.getCategoryList());
         return article;
     }
 
@@ -46,7 +48,7 @@ public class ArticleDao {
         List<Article> articleList = query.getResultList();
         for (Article article : articleList) {
             Hibernate.initialize(article.getAuthor());
-            Hibernate.initialize(article.getCategory());
+            Hibernate.initialize(article.getCategoryList());
         }
         return articleList;
     }
@@ -56,7 +58,20 @@ public class ArticleDao {
         List<Article> articleList = query.setMaxResults(i).getResultList();
         for (Article article : articleList) {
             Hibernate.initialize(article.getAuthor());
-            Hibernate.initialize(article.getCategory());
+            Hibernate.initialize(article.getCategoryList());
+        }
+        return articleList;
+    }
+
+    public List<Article> readAllInCategory(Category categoryId) {
+        List<Category> objects = new ArrayList<>();
+        objects.add(categoryId);
+        Query query = entityManager.createQuery("SELECT a FROM Article a where a.categoryList in (:categoryId)");
+        query.setParameter("categoryId", objects);
+        List<Article> articleList = query.getResultList();
+        for (Article article : articleList) {
+            Hibernate.initialize(article.getAuthor());
+            Hibernate.initialize(article.getCategoryList());
         }
         return articleList;
     }

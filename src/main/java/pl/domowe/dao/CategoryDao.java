@@ -1,6 +1,8 @@
 package pl.domowe.dao;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
+import pl.domowe.entity.Article;
 import pl.domowe.entity.Category;
 
 import javax.persistence.EntityManager;

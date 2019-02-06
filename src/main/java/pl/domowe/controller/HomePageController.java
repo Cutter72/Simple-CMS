@@ -43,6 +43,9 @@ public class HomePageController {
         return "index";
     }
 
+
+
+
     @RequestMapping("/add-article")
     public String addArticle() {
         Article articleToAdd = new Article();
@@ -65,7 +68,7 @@ public class HomePageController {
 
 
         articleToAdd.setAuthor(authorToAdd);
-        articleToAdd.setCategory(categoryList);
+        articleToAdd.setCategoryList(categoryList);
         articleToAdd.setContent("content from explorer");
         articleToAdd.setTitle("title from explorer");
 

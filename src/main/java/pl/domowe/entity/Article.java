@@ -1,6 +1,6 @@
 package pl.domowe.entity;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,8 +21,8 @@ public class Article {
     private String title;
     @ManyToOne
     private Author author;
-    @OneToMany
-    private List<Category> category;
+    @ManyToMany
+    private List<Category> categoryList;
     private String content;
     private LocalDateTime created;
     private LocalDateTime updated;
