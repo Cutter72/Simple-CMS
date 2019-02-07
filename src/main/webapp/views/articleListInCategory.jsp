@@ -6,7 +6,7 @@
     <title>Article List In Category</title>
 </head>
 <body>
-<h1>Article List In Category</h1>
+<h1>Article List In Category ${categoryName}</h1>
 <ul>
     <c:forEach items="${articleListInCategory}" var="article">
         <li>Article Id: ${article.id} Title: ${article.title} Author: ${article.author.firstName} ${article.author.lastName}

@@ -79,8 +79,12 @@ public class ArticleDao {
     public List<Article> readAllInCategory(long category) {
         Query query = entityManager.createQuery("SELECT a FROM Article a join a.categoryList category where category.id in (:category)");
         query.setParameter("category", category);
-        List<Article> burgers = query.getResultList();
-        return burgers;
+        List<Article> articleList = query.getResultList();
+        for (Article article : articleList) {
+            Hibernate.initialize(article.getAuthor());
+            Hibernate.initialize(article.getCategoryList());
+        }
+        return articleList;
     }
 
 }

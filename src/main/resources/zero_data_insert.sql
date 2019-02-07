@@ -1,3 +1,4 @@
+USE spring_cms;
 INSERT INTO `spring_cms`.`Category` (`id`, `description`, `name`)
 VALUES
 ('1', 'polityka description', 'polityka'),
@@ -24,3 +25,20 @@ VALUES
 ('8', 'Artukół8', '2019-02-05 13:13:13', 'Title8', '2019-02-05 13:13:13', '4'),
 ('9', 'Artukół9', '2019-02-05 13:13:13', 'Title9', '2019-02-05 13:13:13', '5'),
 ('10', 'Artukół10', '2019-02-05 13:13:13', 'Title10', '2019-02-05 13:13:13', '5');
+INSERT INTO `spring_cms`.`Article_Category` (`Article_id`, `categoryList_id`)
+VALUES
+('1', '1'),
+('1', '2'),
+('1', '3'),
+('2', '2'),
+('2', '3'),
+('2', '4'),
+('3', '3'),
+('3', '4'),
+('3', '5'),
+('4', '4'),
+('4', '5'),
+('4', '1'),
+('5', '5'),
+('5', '1'),
+('5', '2');

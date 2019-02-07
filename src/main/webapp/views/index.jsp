@@ -17,7 +17,7 @@
 </ul>
 <p>Kategorie: </p>
 <c:forEach items="${categoryList}" var="category">
-    <a href="/articleListInCategory">${category.name}</a><br/>
+    <a href="/articleListInCategory/${category.id}">${category.name}</a><br/>
 </c:forEach>
 </body>
 </html>
