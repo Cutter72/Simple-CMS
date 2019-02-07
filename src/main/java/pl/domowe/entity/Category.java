@@ -16,5 +16,6 @@ public class Category {
     @Column(length = 100, nullable = false)
     private String name;
     private String description;
-
+//    @ManyToMany
+//    private List<Article> articleList;
 }

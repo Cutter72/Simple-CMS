@@ -50,27 +50,20 @@ public class HomePageController {
     public String addArticle() {
         Article articleToAdd = new Article();
 
-        Author authorToAdd = new Author();
-        authorToAdd.setFirstName("author from explorer");
-        authorToAdd.setLastName("lastName from explorer");
-        authorDao.create(authorToAdd);
-        authorToAdd = authorDao.read(1);
+        Author authorToAdd = authorDao.read(1);
 
-
-        Category category1 = new Category();
-        Category category2 = new Category();
-        category1.setName("category fromexplorer");
-        category2.setName("category2 fromexplorer");
-        categoryDao.create(category1);
-        categoryDao.create(category2);
-
-        List<Category> categoryList = categoryDao.readAll();
-
+        Category category1 = categoryDao.read(1);
+        Category category2 = categoryDao.read(2);
+        Category category3 = categoryDao.read(3);
+        List<Category> categoryList = new ArrayList<>();
+        categoryList.add(category1);
+        categoryList.add(category2);
+        categoryList.add(category3);
 
         articleToAdd.setAuthor(authorToAdd);
         articleToAdd.setCategoryList(categoryList);
-        articleToAdd.setContent("content from explorer");
-        articleToAdd.setTitle("title from explorer");
+        articleToAdd.setContent("content from controller");
+        articleToAdd.setTitle("title from controller");
 
         articleDao.create(articleToAdd);
         return "index";

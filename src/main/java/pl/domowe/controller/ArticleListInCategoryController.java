@@ -27,10 +27,11 @@ public class ArticleListInCategoryController {
 
     @RequestMapping("/articleListInCategory")
     public String showAllArticlesInCategory(Model model) {
-        Category read = categoryDao.read(1l);
-
-        List<Article> articleList = articleDao.readAllInCategory(read);
-//        model.addAttribute("articleListInCategory", articleList);
+        List<Article> articleList = articleDao.readAllInCategory(2L);
+        model.addAttribute("articleListInCategory", articleList);
+        for (Article article : articleList) {
+            System.out.println(article);
+        }
         return "articleListInCategory";
     }
 }
