@@ -1,1 +1,1 @@
-### Simple COntent Management Service
+### Simple Content Management Service
